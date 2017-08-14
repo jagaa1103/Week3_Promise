@@ -10,11 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let promiseService = PromiseService()
-        promiseService.getWeather()
+        promiseService.getWeather(completion: {
+            print("completed")
+            if let weather = promiseService.parseJSON() {
+                print(weather)
+                DispatchQueue.main.async {
+                    self.setText(text: "\(weather)")
+                }
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,5 +32,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func setText(text: String){
+        self.label.text = text
+    }
 }
 
