@@ -6,7 +6,7 @@ target 'Week3_Promise' do
   use_frameworks!
 
   # Pods for Week3_Promise
-  pod "PromiseKit", "~> 4.0"
+#  pod "PromiseKit", "~> 4.0"
 
   target 'Week3_PromiseUITests' do
     inherit! :search_paths
